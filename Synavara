@@ -3,8 +3,8 @@ andmebaas haldus - управление базой данных
 andmebaas haldu süsteem - система управления базой данных
 andme - данные
 tabel - таблица
-vaerg = väli
-rida = kirje
+vaerg = väli - поле
+rida = kirje - строка
 päring - запрос
 loo - создать
 laadi alla - скачать
