@@ -84,3 +84,6 @@ SELECT *
 FROM opilane, Language keelevalik
 WHERE opilane.opilaneId=keelevalik.opilaneID
 AND Language.ID=keelevalik.Language
+
+Create Table oppimine(
+oppilaneID Identity(1,1), primary key, aine varchar(10) not null
