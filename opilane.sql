@@ -49,20 +49,31 @@ Percentage smallint
 Select * from Language
 
 INSERT INTO Language(ID, Code, Language)
-VALUES (1,'EST', 'eesti'), (3,'ENG', 'Inglise'),(4,'DE', 'saksa')
+VALUES 
+(1,'EST', 'eesti'), 
+(2,'ENG', 'Inglise'),
+(3,'DE', 'saksa');
 
-Create table keelevalik(
-keelevalikID int primary key identity(1,1),
-valikuNimetus varchar(10), not null,
-opilaneID int,
-Foreign key(Language), references Language(ID)
-)
+
+CREATE TABLE keelevalik(
+keelevalikID INT PRIMARY KEY IDENTITY(1,1),
+valikuNimetus VARCHAR(10) NOT NULL,
+opilaneID INT,
+FOREIGN KEY (opilaneID) REFERENCES opilane(opilaneId),
+LanguageID INT,
+FOREIGN KEY (LanguageID) REFERENCES Language(ID)
+);
+
 select * from keelevalik;
 select * from Language;
 select * from opilane;
 
-INSERT INTO keelevalik(valikuNimetus, opilaneID, Language)
-Values ('valik B', 3, 4)
+INSERT INTO keelevalik(valikuNimetus, opilaneID, LanguageID)
+VALUES 
+('valik A', 1, 1),
+('valik B', 1, 2),  
+('valik A', 2, 2), 
+('valik B', 2, 3);  
 
 SELECT opilane.eesnimi, Language.Language
 FROM opilane, Language keelevalik
