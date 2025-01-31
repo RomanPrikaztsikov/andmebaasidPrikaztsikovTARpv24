@@ -85,5 +85,19 @@ FROM opilane, Language keelevalik
 WHERE opilane.opilaneId=keelevalik.opilaneID
 AND Language.ID=keelevalik.Language
 
-Create Table oppimine(
-oppilaneID Identity(1,1), primary key, aine varchar(10) not null
+CREATE TABLE Category (
+idCategory Int Primary key identity(1,1),
+CategoryName varchar(25) UNIQUE
+)
+SELECT * FROM Category;
+INSERT INTO Category (CategoryName)
+Values ('jook'), ('söök')
+
+--Tabeli struktuuri mutmine -->uue veergu lisamine
+
+ALTER TABLE Category ADD test int;
+
+ALTER TABLE Category DROP COLUMN test;
+SELECT * FROM Category;
+
+
