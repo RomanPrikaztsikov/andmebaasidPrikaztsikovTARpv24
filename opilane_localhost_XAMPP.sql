@@ -33,3 +33,18 @@ FOREIGN KEY (opilaneID) REFERENCES opilane(opilaneId),
 LanguageID INT,
 FOREIGN KEY (LanguageID) REFERENCES Language(ID)
 );
+
+CREATE TABLE Language
+(
+ID int NOT NULL PRIMARY KEY,
+Code char(3) NOT NULL,
+Language varchar(50) NOT NULL,
+IsOfficial bit,
+Percentage smallint
+); 
+
+INSERT INTO Language(ID, Code, Language)
+VALUES 
+(1,'EST', 'eesti'), 
+(2,'ENG', 'Inglise'),
+(3,'DE', 'saksa');
