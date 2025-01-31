@@ -100,4 +100,21 @@ ALTER TABLE Category ADD test int;
 ALTER TABLE Category DROP COLUMN test;
 SELECT * FROM Category;
 
+CREATE TABLE Product (
+idProduct int Primary key identity(1,1),
+ProductName varchar(25),
+idCategory int,
+Foreign key (idCategory) references Category(idCategory),
+Price decimal(5,2)
+)
 
+SELECT * FROM Category;
+SELECT * FROM  Product;
+
+INSERT INTO Product (ProductName, idCategory, Price)
+VALUES 
+('Fanta', 1, 2.0),
+('Mahl', 1, 2.6),
+('Cola', 1, 3.0),
+('Vett', 1, 1.0),
+('Sprite', 1, 2.4)
