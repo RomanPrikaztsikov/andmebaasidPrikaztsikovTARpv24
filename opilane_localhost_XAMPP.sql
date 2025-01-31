@@ -7,3 +7,17 @@ stip bit,
 aadress text,
 keskmine_hinne decimal(2,1)
 );
+
+INSERT INTO opilane(eesimi, perenimi, synniaeg, stip, keskmine_hinne)
+VALUES(
+'Nikita',
+'Nikita',
+'2000-12-5',
+1,
+4.5),
+(
+'Nikita1',
+'Nikita1',
+'2000-12-5',
+1,
+4.5)
