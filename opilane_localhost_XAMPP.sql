@@ -21,3 +21,15 @@ VALUES(
 '2000-12-5',
 1,
 4.5)
+
+DELETE FROM opilane WHERE opilaneID=2;
+UPDATE opilane SET aadress='Tallinn'
+
+CREATE TABLE keelevalik(
+keelevalikID INT PRIMARY KEY AUTO_INCREMENT,
+valikuNimetus VARCHAR(10) NOT NULL,
+opilaneID INT,
+FOREIGN KEY (opilaneID) REFERENCES opilane(opilaneId),
+LanguageID INT,
+FOREIGN KEY (LanguageID) REFERENCES Language(ID)
+);
