@@ -149,3 +149,14 @@ select * from opilane;
 end;
 
 exec AddStudent @eesnimi='Aaa', @perenimi='Bbb', @synniaeg='2000-10-4', @stip='1', @aadress='asd', @keskmine_hinne='4.5'
+
+Create procedure NimiOtsing
+@taht char(1)
+as
+begin
+select * from opilane
+where eesnimi like @taht + '%';
+--% - kõik teised tähed
+end;
+--kutse
+exec NimiOtsing T;
