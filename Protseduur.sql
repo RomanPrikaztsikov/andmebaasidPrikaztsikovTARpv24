@@ -99,3 +99,6 @@ Values
 (lnimi, rArv);
 Select * from linn;
 
+
+-------------------------------procedure xampp sql opilane table
+CREATE TABLE opilane( opilaneId int primary key AUTO_INCREMENT, eesnimi varchar(25) not null, perenimi varchar(25) not null, synniaeg date, stip bit, aadress text, keskmine_hinne decimal(2,1) ); 
