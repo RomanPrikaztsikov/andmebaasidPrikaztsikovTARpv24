@@ -31,4 +31,35 @@ End;
 --protseduuri kutse
 EXEC lisaLinn @lnimi='Tartu',@rArv=1256
 --lihtsam
-EXEC lisaLinn 'Tartu2',1256
+EXEC lisaLinn 'Tartu222',1256
+--kirje kustutamine 
+delete from linn where linnID=3;
+Select * from linn;
+
+--protseduur, mis kustutab linn id järgi
+Create procedure kustutaLinn
+@deleteID int
+as
+begin
+Select * from linn;
+delete from linn where linnID=@deleteID;
+Select * from linn;
+end;
+
+--kutse
+exec kustutaLinn 4;
+--protseduuri kustutamine
+drop procedure kustutaLinn;
+
+
+--protseduur, mis otsib linn esimese tähte järgi
+Create procedure linnaOtsing
+@taht char(1)
+as
+begin
+select * from linn
+where linnNimi like @taht + '%';
+--% - kõik teised tähed
+end;
+--kutse
+exec linnaOtsing T;
