@@ -75,6 +75,6 @@ Begin
 
 INSERT INTO linn(linnNimi, rahvaArv)
 Values
-(@lnimi, @rArv);
+(lnimi, rArv);
 Select * from linn;
 
