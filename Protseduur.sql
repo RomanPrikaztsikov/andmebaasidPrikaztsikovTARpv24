@@ -63,3 +63,18 @@ where linnNimi like @taht + '%';
 end;
 --kutse
 exec linnaOtsing T;
+
+
+
+--------------------------------------------------------------kasutame XAMPP local host
+
+
+Create table linn( linnId int Primary key AUTO_INCREMENT, linnNimi varchar(30), rahvaarv int); 
+INSERT INTO linn(linnNimi, rahvaArv) Values ('Tallinn', 60000), ('Narva', 30000), ('Pärnu', 40000), ('Tartu', 50000); 
+Begin
+
+INSERT INTO linn(linnNimi, rahvaArv)
+Values
+(@lnimi, @rArv);
+Select * from linn;
+
