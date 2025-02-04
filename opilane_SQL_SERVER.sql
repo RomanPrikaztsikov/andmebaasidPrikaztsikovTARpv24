@@ -118,3 +118,34 @@ VALUES
 ('Cola', 1, 3.0),
 ('Vett', 1, 1.0),
 ('Sprite', 1, 2.4)
+
+
+--------------------------procedure
+CREATE TABLE opilane(
+opilaneId int primary key identity(1,1),
+eesnimi varchar(25) not null,
+perenimi varchar(25) not null,
+synniaeg date,
+stip bit,
+aadress text,
+keskmine_hinne decimal(2,1)
+)
+select * from opilane;
+
+
+Create procedure AddStudent
+@eesnimi varchar(25),
+@perenimi varchar(25),
+@synniaeg date,
+@stip bit,
+@aadress text,
+@keskmine_hinne decimal(2,1)
+
+as
+begin
+insert into opilane (eesnimi, perenimi, synniaeg, stip, aadress, keskmine_hinne)
+VALUES (@eesnimi, @perenimi, @synniaeg, @stip, @aadress, @keskmine_hinne);
+select * from opilane;
+end;
+
+exec AddStudent @eesnimi='Aaa', @perenimi='Bbb', @synniaeg='2000-10-4', @stip='1', @aadress='asd', @keskmine_hinne='4.5'
