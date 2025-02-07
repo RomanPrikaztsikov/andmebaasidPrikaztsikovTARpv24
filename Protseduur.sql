@@ -100,5 +100,123 @@ Values
 Select * from linn;
 
 
+
 -------------------------------procedure xampp sql opilane table
 CREATE TABLE opilane( opilaneId int primary key AUTO_INCREMENT, eesnimi varchar(25) not null, perenimi varchar(25) not null, synniaeg date, stip bit, aadress text, keskmine_hinne decimal(2,1) ); 
+
+
+
+
+--------------------------------------------------------------
+Create database protseduurPrikaztsikov;
+use protseduurPrikaztsikov;
+Create table linn(
+linnId int Primary key identity(1,1),
+linnNimi varchar(30),
+rahvaarv int);
+Select * from linn;
+INSERT INTO linn(linnNimi, rahvaArv)
+Values
+('Tallinn', 60000),
+('Narva', 30000),
+('Pärnu', 40000),
+('Tartu', 50000);
+
+Create procedure lisaLinn
+@lnimi varchar(30),
+@rArv int
+AS
+Begin
+
+INSERT INTO linn(linnNimi, rahvaArv)
+Values
+(@lnimi, @rArv);
+Select * from linn;
+
+End;
+
+--uue veeru lisamine
+alter table linn add test int;
+--veeru kustutamine
+alter table linn drop column test;
+
+create procedure veeruLisaKustuta
+@valik varchar(20), 
+@veerunimi varchar(20),
+@tyyp varchar(20) =null
+
+as
+begin
+declare @sqltegevus as varchar (max)
+set @sqltegevus=case
+when @valik='add' then concat('alter table linn add ', @veerunimi, ' ',  @tyyp)
+when @valik='drop' then concat('alter table linn drop column ', @veerunimi)
+end;
+print @sqltegevus;
+begin
+exec (@sqltegevus);
+end;
+end;
+
+--kutse
+exec veeruLisaKustuta @valik='add', @veerunimi='test3', @tyyp='int';
+select * from linn;
+
+exec veeruLisaKustuta @valik='drop', @veerunimi='test3';
+
+
+
+
+create procedure veerukustutaTabelis
+@valik varchar(20), 
+@tabelinimi varchar(20),
+@veerunimi varchar(20),
+@tyyp varchar(20) =null
+
+as
+begin
+declare @sqltegevus as varchar (max)
+set @sqltegevus=case
+when @valik='add' then concat('alter table ', @tabelinimi, ' add ',  @veerunimi, ' ',  @tyyp)
+when @valik='drop' then concat('alter table ',  @tabelinimi, ' drop column ', @veerunimi)
+end;
+print @sqltegevus;
+begin
+exec (@sqltegevus);
+end;
+end;
+
+--kutse
+exec veerukustutaTabelis @valik='add', @tabelinimi='linn', @veerunimi='test3', @tyyp='int';
+select * from linn;
+
+exec veerukustutaTabelis @valik='drop', @tabelinimi='linn', @veerunimi='test3';
+
+--protseduur tingimusega
+create procedure rahvaHinnang
+@piir int
+
+
+as
+begin
+select linnNimi, rahvaArv, iif(rahvaArv<@piir, 'väike linn', 'surr linn') as Hinnang
+from linn;
+
+end;
+
+drop procedure rahvaHinnang;
+
+exec rahvaHinnang 42000;
+--Agregaat funktisoonid: sum(), avg(), min(), max(), count()
+
+create procedure kokkurahvaArv
+
+as
+begin
+select sum(rahvaarv) as 'kokku rahvaArv', avg(rahvaArv) as 'keskmine rahvaArv', count(*) as 'linnade arv'
+from linn;
+end;
+
+exec kokkurahvaarv;
+
+
