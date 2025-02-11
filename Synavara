@@ -21,3 +21,11 @@ relatsiooni andmebass - релиационная база данных
 git config --global user.name "romanprikaztsikov"
 config --global user.email "mikolkyle@gmail.com"
 git config --global --list
+cd TARpv24andmebaasTerms
+git status
+git branch romanprikaztsikov
+git checkout romanprikaztsikov
+git add .
+git commit -a -m "Nimi on lisatud"
+git push
+git push --set-upstream origin romanprikaztsikov
