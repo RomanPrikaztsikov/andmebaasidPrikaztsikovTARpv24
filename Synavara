@@ -14,3 +14,10 @@ varundamine - резервное копирование
 tastamine - восстановление
 pääringukeel - язык запроса
 relatsiooni andmebass - релиационная база данных
+
+>cd desktop
+<cd ..
+>c:
+git config --global user.name "romanprikaztsikov"
+config --global user.email "mikolkyle@gmail.com"
+git config --global --list
