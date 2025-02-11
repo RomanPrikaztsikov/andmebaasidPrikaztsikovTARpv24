@@ -25,7 +25,9 @@ cd TARpv24andmebaasTerms
 git status
 git branch romanprikaztsikov
 git checkout romanprikaztsikov
+
 git add .
 git commit -a -m "Nimi on lisatud"
 git push
+
 git push --set-upstream origin romanprikaztsikov
