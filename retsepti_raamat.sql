@@ -1,5 +1,5 @@
-create database retseptiRaamatPoldsaar;
-use retseptiRaamatPoldsaar;
+create database retseptiRaamatPrikaztsikov;
+use retseptiRaamatPrikaztsikov;
 
 create table kasutaja(
 kasutaja_id int primary key identity(1,1),
